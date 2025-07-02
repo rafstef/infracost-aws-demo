@@ -49,7 +49,6 @@ pipeline {
         stage('TF Init and validations checks') {
             steps {
                 sh "terraform version"
-                sh "echo env name ${env.ENV_NAME}"
                 sh "terraform init -backend-config=bucket=infratest-demo-${env.ENV_NAME}-tfstate -no-color -reconfigure"
                 sh "terraform validate -no-color"
             }
