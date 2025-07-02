@@ -29,4 +29,4 @@ terraform.rc
 # File di configurazione IDE (opzionale, se vuoi evitare di versionare le impostazioni locali)
 .vscode/
 .idea/
-
+.infracost/
