@@ -49,14 +49,14 @@ pipeline {
         stage('TF Init and validations checks') {
             steps {
                 sh "terraform version"
-                sh "terraform init -backend-config=bucket=infratest-demo-${env.ENV_NAME}-tfstate -no-color -reconfigure"
+                sh "terraform init -backend-config=bucket=infratest-demo-${env.ENV_NAME}-tfstate -no-color"
                 sh "terraform validate -no-color"
             }
         }
         stage('TF Plan creation') {
             steps {
                 sh "terraform version"
-                sh "terraform init -backend-config=bucket=infratest-demo-${env.ENV_NAME}-tfstate -no-color -reconfigure"
+                sh "terraform init -backend-config=bucket=infratest-demo-${env.ENV_NAME}-tfstate -no-color"
                 sh "terraform plan -destroy -no-color -input=false -var-file=envvars/${env.ENV_NAME}.tfvars -out terraform-destroy-plan-${env_name}.plan"
             }
         }
@@ -66,7 +66,7 @@ pipeline {
                     approve_plan=askUserInput("Apply Terraform destroy plan?","NO\nYES","NO",300)
                     if( approve_plan == "YES"){
                         sh "terraform version"
-                        sh "terraform init -backend-config=bucket=infratest-demo-${env.ENV_NAME}-tfstate -no-color -reconfigure"
+                        sh "terraform init -backend-config=bucket=infratest-demo-${env.ENV_NAME}-tfstate -no-color"
                         sh "terraform apply -destroy -no-color -input=false terraform-destroy-plan-${env_name}.plan"
                     }else{
                         echo "TF destroy plan not approved. Skip Apply . . . "
