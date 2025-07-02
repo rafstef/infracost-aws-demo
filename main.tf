@@ -17,8 +17,8 @@ module "vpc" {
   azs             = ["eu-central-1a", "eu-central-1b", "eu-central-1c"]
   private_subnets = var.private_subnets
   public_subnets  = var.public_subnets
-  enable_nat_gateway = false
-  enable_vpn_gateway = false
+  enable_nat_gateway = true
+  enable_vpn_gateway = true
   tags = {
     Terraform = "true"
     Environment = "${var.env}"
