@@ -4,7 +4,6 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket         = "infratest-demo-${var.env}-tfstate"
     key            = "terraform.tfstate"
     region         = "eu-central-1"
   }
