@@ -1,4 +1,4 @@
-vm_count      = 1
+vm_count      = 2
 instance_type = "t3.micro"
 ami           = "ami-0929684ff3ecf3f6d"
 env           = "dev"
