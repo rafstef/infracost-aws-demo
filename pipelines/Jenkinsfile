@@ -44,14 +44,14 @@ pipeline {
         stage('TF Init and validations checks') {
             steps {
                 sh "terraform version"
-                sh "terraform init -backend-config=bucket=infratest-demo-${env.ENV_NAME}-tfstate -no-color -reconfigure"
+                sh "terraform init -backend-config=bucket=infratest-demo-${env.ENV_NAME}-tfstate -no-color"
                 sh "terraform validate -no-color"
             }
         }
         stage('TF Plan creation') {
             steps {
                 sh "terraform version"
-                sh "terraform init -backend-config=bucket=infratest-demo-${env.ENV_NAME}-tfstate -no-color -reconfigure"
+                sh "terraform init -backend-config=bucket=infratest-demo-${env.ENV_NAME}-tfstate -no-color"
                 sh "terraform plan -no-color -input=false -var-file=envvars/${env.ENV_NAME}.tfvars -out terraform-plan-${env_name}.plan"
             }
         }

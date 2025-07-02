@@ -32,11 +32,6 @@ pipeline {
         terraform 'terraform'
     }
     stages{
-        stage('Clean workspace') {
-            steps {
-                cleanWs()
-            }
-        }
         stage ("Setup Deployment Environment") {
             steps {
                 script {
