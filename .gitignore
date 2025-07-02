@@ -1,0 +1,34 @@
+# Directory locali di Terraform (provider, moduli scaricati)
+**/.terraform/
+
+# File di stato (contengono dati sensibili e lo stato dell’infrastruttura)
+*.tfstate
+*.tfstate.*
+
+# File di variabili, spesso usati per dati sensibili
+*.tfvars
+*.tfvars.json
+terraform.tfvars
+
+# File di override locali (personalizzazioni non condivise)
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# File di piano generati da 'terraform plan -out'
+*.tfplan
+
+# Log di crash
+crash.log
+
+# File di configurazione CLI locali
+.terraformrc
+terraform.rc
+
+# File di configurazione IDE (opzionale, se vuoi evitare di versionare le impostazioni locali)
+.vscode/
+.idea/
+.infracost/
+.infracost/*
+
