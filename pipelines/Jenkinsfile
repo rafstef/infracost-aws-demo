@@ -74,6 +74,7 @@ pipeline {
                 script {
                     def tfvarsFile = "envvars/${env.ENV_NAME}.tfvars"
                         sh """
+                            pip3 install -U checkov
                             checkov -b .
                         """
                 }
