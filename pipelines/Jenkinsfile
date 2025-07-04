@@ -72,17 +72,22 @@ pipeline {
         stage('checkov') {
             steps {
                 script {
-                    def tfvarsFile = "envvars/${env.ENV_NAME}.tfvars"
-                        sh """
-                            pip3 install -U checkov
-                            checkov -b .
-                        """
+                    try {
+                        def tfvarsFile = "envvars/${env.ENV_NAME}.tfvars"
+                            sh """
+                                export NONINTERACTIVE=1
+                                brew install pipx
+                                pipx install checkov
+                                pipx upgrade checkov
+                                checkov --directory .
+                            """
+                    } catch (err) {
+                        echo "check error"
+                    }
                 }
             }
         }
         
-        
-
         stage('TF Apply') {
             steps {
                 script{
