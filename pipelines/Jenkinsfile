@@ -28,6 +28,9 @@ pipeline {
         TERRAFORM_PLAN_FILE="DEMO"
         ENV_NAME = getEnvName(env.GIT_BRANCH)
     }
+    options {
+        ansiColor('xterm')
+    }
     tools {
         terraform 'terraform'
     }
