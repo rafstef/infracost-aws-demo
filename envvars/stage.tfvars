@@ -1,4 +1,4 @@
-vm_count      = 8
+vm_count      = 10
 instance_type = "t3.micro"
 ami           = "ami-0929684ff3ecf3f6d"
 env           = "Stage"
