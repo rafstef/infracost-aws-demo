@@ -1,5 +1,5 @@
-vm_count      = 8
-instance_type = "t3.micro"
+vm_count      = 15
+instance_type = "m5.micro"
 ami           = "ami-0929684ff3ecf3f6d"
 env           = "Prod"
 private_subnets = ["10.0.16.0/24", "10.0.17.0/24", "10.0.18.0/24"]
