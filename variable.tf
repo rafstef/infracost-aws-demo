@@ -6,7 +6,7 @@ variable "vm_count" {
 variable "vm1_count" {
   description = "Number of VMs to create"
   type        = number
-
+}
 variable "instance_type" {
   description = "EC2 instance type"
   type        = string
