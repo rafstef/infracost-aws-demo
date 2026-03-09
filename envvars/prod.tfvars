@@ -1,4 +1,4 @@
-vm_count      = 3
+vm_count      = 10
 instance_type = "m5.micro"
 ami           = "ami-0929684ff3ecf3f6d"
 env           = "Prod"
