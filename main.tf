@@ -38,19 +38,6 @@ resource "aws_instance" "vm" {
     Terraform = "true"
   }
 }
-resource "aws_instance" "vm1" {
-  count         = var.vm1_count
-  ami           = var.ami
-  instance_type = var.instance_type
-  subnet_id     = element(module.vpc.private_subnets, count.index % length(module.vpc.private_subnets))
-  vpc_security_group_ids = [aws_security_group.vm_sg.id] 
-
-  tags = {
-    Name = "infracost-demo-vm1-${var.env}-${count.index}"
-    Environment = "${var.env}"
-    Terraform = "true"
-  }
-}
 
 resource "aws_security_group" "vm_sg" {
   name        = "infracost-demo-vm-security-group-${var.env}"
