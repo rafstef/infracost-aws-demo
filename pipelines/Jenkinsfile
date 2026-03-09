@@ -48,7 +48,7 @@ pipeline {
             steps {
                 ansiColor('xterm') {
                     sh "terraform version"
-                    sh "terraform init -upgrade"
+                    //sh "terraform init -upgrade"
                     sh "terraform init -backend-config=bucket=infratest-demo-${env.ENV_NAME}-tfstate"
                     sh "terraform validate"
                 }
