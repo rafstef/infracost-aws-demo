@@ -44,8 +44,8 @@ pipeline {
         stage('TF Init and validations checks') {
             steps {
                 sh "terraform version"
-                sh "terraform init -upgrade"
                 sh "terraform init -backend-config=bucket=infratest-demo-${env.ENV_NAME}-tfstate -no-color"
+                sh "terraform init -upgrade"
                 sh "terraform validate -no-color"
             }
         }
