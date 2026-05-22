@@ -1,18 +1,15 @@
 import javaposse.jobdsl.plugin.GlobalJobDslSecurityConfiguration
 import jenkins.model.GlobalConfiguration
 
-// disable Job DSL script approval
-
 GlobalConfiguration.all().get(GlobalJobDslSecurityConfiguration.class).useScriptSecurity=false
 GlobalConfiguration.all().get(GlobalJobDslSecurityConfiguration.class).save()
 
 pipeline {
     agent any
     stages {
-        stage('FolderRoot') {
+        stage('FolderDSL') {
             steps {
-                jobDsl scriptText: 'job("DSL")'
-                jobDsl targets: ['foldersRoot.groovy'].join('\n'),
+                jobDsl targets: 'pipelines/DSL/foldersRoot.groovy',
                 removedJobAction: 'DELETE',
                 removedViewAction: 'DELETE',
                 lookupStrategy: 'SEED_JOB'
@@ -21,14 +18,20 @@ pipeline {
 
         stage('FolderENV') {
             steps {
-                jobDsl scriptText: 'job("DSL/ENV")'
-                jobDsl targets: ['foldersENV.groovy'].join('\n'),
+                jobDsl targets: 'pipelines/DSL/foldersENV.groovy',
+                removedJobAction: 'DELETE',
+                removedViewAction: 'DELETE',
+                lookupStrategy: 'SEED_JOB'
+            }
+        }
+
+        stage('Pipeline') {
+            steps {
+                jobDsl targets: 'pipelines/DSL/dsl.groovy',
                 removedJobAction: 'DELETE',
                 removedViewAction: 'DELETE',
                 lookupStrategy: 'SEED_JOB'
             }
         }
     }
-
-
 }
