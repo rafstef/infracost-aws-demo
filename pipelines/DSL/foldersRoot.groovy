@@ -1,8 +1,13 @@
+
+folder('DSL'){
+    displayName('DSL')
+    description('DSL')
+}
 folder('AWS'){
     displayName('AWS')
     description('AWS')
 }
-folder('DSL'){
-    displayName('DSL')
-    description('DSL')
+folder('AWS/PROD'){
+    displayName('PROD')
+    description('PROD')
 }
