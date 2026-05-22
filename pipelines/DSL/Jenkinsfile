@@ -11,8 +11,8 @@ pipeline {
     stages {
         stage('FolderRoot') {
             steps {
-                jobDsl scriptText: 'job("AWS")'
-                jobDsl targets: ['pipelines/DSL/foldersRoot.groovy'].join('\n'),
+                jobDsl scriptText: 'job("DSL")'
+                jobDsl targets: ['foldersRoot.groovy'].join('\n'),
                 removedJobAction: 'DELETE',
                 removedViewAction: 'DELETE',
                 lookupStrategy: 'SEED_JOB'
@@ -21,8 +21,8 @@ pipeline {
 
         stage('FolderENV') {
             steps {
-                jobDsl scriptText: 'job("ENV")'
-                jobDsl targets: ['pipelines/DSL/foldersENV.groovy'].join('\n'),
+                jobDsl scriptText: 'job("DSL/ENV")'
+                jobDsl targets: ['foldersENV.groovy'].join('\n'),
                 removedJobAction: 'DELETE',
                 removedViewAction: 'DELETE',
                 lookupStrategy: 'SEED_JOB'
