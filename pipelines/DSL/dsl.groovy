@@ -1,4 +1,4 @@
-pipelineJob('DSL/infracost-aws-demo') {
+pipelineJob('AWS/infracost-aws-demo') {
     description('Terraform + Infracost pipeline for infracost-aws-demo')
 
     definition {
