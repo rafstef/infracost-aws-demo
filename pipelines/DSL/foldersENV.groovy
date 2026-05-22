@@ -1,12 +1,12 @@
-folder('AWS/PROD'){
+folder('DSL/PROD'){
     displayName('PROD')
     description('PROD')
 }
-folder('AWS/STAGE'){
+folder('DSL/STAGE'){
     displayName('STAGE')
     description('STAGE')
 }
-folder('AWS/DEV'){
+folder('DSL/DEV'){
     displayName('DEV')
     description('DEV')
 }
