@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('FolderDSL') {
             steps {
-                jobDsl targets: 'pipelines/DSL/foldersRoot.groovy',
+                jobDsl targets: 'foldersRoot.groovy',
                 removedJobAction: 'DELETE',
                 removedViewAction: 'DELETE',
                 lookupStrategy: 'SEED_JOB'
@@ -18,7 +18,7 @@ pipeline {
 
         stage('FolderENV') {
             steps {
-                jobDsl targets: 'pipelines/DSL/foldersENV.groovy',
+                jobDsl targets: 'foldersENV.groovy',
                 removedJobAction: 'DELETE',
                 removedViewAction: 'DELETE',
                 lookupStrategy: 'SEED_JOB'
@@ -27,7 +27,7 @@ pipeline {
 
         stage('Pipeline') {
             steps {
-                jobDsl targets: 'pipelines/DSL/dsl.groovy',
+                jobDsl targets: 'dsl.groovy',
                 removedJobAction: 'DELETE',
                 removedViewAction: 'DELETE',
                 lookupStrategy: 'SEED_JOB'
