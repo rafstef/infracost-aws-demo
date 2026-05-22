@@ -14,7 +14,7 @@ pipelineJob('AWS/PROD/infra-1') {
                     }
                 }
             }
-            scriptPath('Jenkinsfile')
+            scriptPath('pipelines/DSL/Jenkinsfile')
             lightweight(true)
         }
     }
@@ -39,7 +39,7 @@ pipelineJob('AWS/STAGE/infra-1') {
                     }
                 }
             }
-            scriptPath('Jenkinsfile')
+            scriptPath('pipelines/DSL/Jenkinsfile')
             lightweight(true)
         }
     }
@@ -64,7 +64,7 @@ pipelineJob('AWS/DEV/infra-1') {
                     }
                 }
             }
-            scriptPath('Jenkinsfile')
+            scriptPath('pipelines/DSL/Jenkinsfile')
             lightweight(true)
         }
     }
