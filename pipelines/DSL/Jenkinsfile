@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('FolderRoot') {
             steps {
-                jobDsl scriptText: 'job("folders-root")'
+                jobDsl scriptText: 'job("AWS")'
                 jobDsl targets: ['foldersRoot.groovy'].join('\n'),
                 removedJobAction: 'DELETE',
                 removedViewAction: 'DELETE',
