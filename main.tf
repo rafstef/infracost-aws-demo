@@ -2,6 +2,7 @@ provider "aws" {
   region = "eu-central-1"
 }
 
+
 terraform {
   backend "s3" {
     key            = "terraform.tfstate"
@@ -26,7 +27,7 @@ module "vpc" {
 }
 
 resource "aws_instance" "vm" {
-  count         = var.vm_count
+  count         = 10
   ami           = var.ami
   instance_type = var.instance_type
   subnet_id     = element(module.vpc.private_subnets, count.index % length(module.vpc.private_subnets))

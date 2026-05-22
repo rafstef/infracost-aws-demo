@@ -1,0 +1,12 @@
+folder('AWS/PROD'){
+    displayName('PROD')
+    description('PROD')
+}
+folder('AWS/STAGE'){
+    displayName('STAGE')
+    description('STAGE')
+}
+folder('AWS/DEV'){
+    displayName('DEV')
+    description('DEV')
+}

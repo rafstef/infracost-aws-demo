@@ -1,0 +1,37 @@
+import javaposse.jobdsl.plugin.GlobalJobDslSecurityConfiguration
+import jenkins.model.GlobalConfiguration
+
+GlobalConfiguration.all().get(GlobalJobDslSecurityConfiguration.class).useScriptSecurity=false
+GlobalConfiguration.all().get(GlobalJobDslSecurityConfiguration.class).save()
+
+pipeline {
+    agent any
+    stages {
+        stage('FolderDSL') {
+            steps {
+                jobDsl targets: 'pipelines/DSL/foldersRoot.groovy',
+                removedJobAction: 'DELETE',
+                removedViewAction: 'DELETE',
+                lookupStrategy: 'SEED_JOB'
+            }
+        }
+
+        stage('FolderENV') {
+            steps {
+                jobDsl targets: 'pipelines/DSL/foldersENV.groovy',
+                removedJobAction: 'DELETE',
+                removedViewAction: 'DELETE',
+                lookupStrategy: 'SEED_JOB'
+            }
+        }
+
+        stage('Pipeline') {
+            steps {
+                jobDsl targets: 'pipelines/DSL/dsl.groovy',
+                removedJobAction: 'DELETE',
+                removedViewAction: 'DELETE',
+                lookupStrategy: 'SEED_JOB'
+            }
+        }
+    }
+}
