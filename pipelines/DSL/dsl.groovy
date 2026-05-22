@@ -1,4 +1,4 @@
-pipelineJob('AWS/PROD/infra-1') {
+pipelineJob('AWS/PROD/deploy-infra-1') {
     description('Terraform + Infracost pipeline for infracost-aws-demo')
 
     definition {
@@ -14,7 +14,7 @@ pipelineJob('AWS/PROD/infra-1') {
                     }
                 }
             }
-            scriptPath('pipelines/TF/Jenkinsfile')
+            scriptPath('Jenkinsfile')
             lightweight(true)
         }
     }
@@ -23,7 +23,7 @@ pipelineJob('AWS/PROD/infra-1') {
         disableConcurrentBuilds()
     }
 }
-pipelineJob('AWS/STAGE/infra-1') {
+pipelineJob('AWS/STAGE/deploy-infra-1') {
     description('Terraform + Infracost pipeline for infracost-aws-demo')
 
     definition {
@@ -39,7 +39,7 @@ pipelineJob('AWS/STAGE/infra-1') {
                     }
                 }
             }
-            scriptPath('pipelines/TF/Jenkinsfile')
+            scriptPath('Jenkinsfile')
             lightweight(true)
         }
     }
@@ -48,7 +48,7 @@ pipelineJob('AWS/STAGE/infra-1') {
         disableConcurrentBuilds()
     }
 }
-pipelineJob('AWS/DEV/infra-1') {
+pipelineJob('AWS/DEV/deploy-infra-1') {
     description('Terraform + Infracost pipeline for infracost-aws-demo')
 
     definition {
@@ -64,7 +64,84 @@ pipelineJob('AWS/DEV/infra-1') {
                     }
                 }
             }
-            scriptPath('pipelines/TF/Jenkinsfile')
+            scriptPath('Jenkinsfile')
+            lightweight(true)
+        }
+    }
+
+    properties {
+        disableConcurrentBuilds()
+    }
+}
+
+
+pipelineJob('AWS/PROD/destroy-infra-1') {
+    description('Terraform + Infracost pipeline for infracost-aws-demo')
+
+    definition {
+        cpsScm {
+            scm {
+                git {
+                    remote {
+                        url('https://github.com/rafstef/infracost-aws-demo.git')
+                    }
+                    branch('*/master')
+                    extensions {
+                        cleanBeforeCheckout()
+                    }
+                }
+            }
+            scriptPath('destroy.groovy')
+            lightweight(true)
+        }
+    }
+
+    properties {
+        disableConcurrentBuilds()
+    }
+}
+pipelineJob('AWS/STAGE/destroy-infra-1') {
+    description('Terraform + Infracost pipeline for infracost-aws-demo')
+
+    definition {
+        cpsScm {
+            scm {
+                git {
+                    remote {
+                        url('https://github.com/rafstef/infracost-aws-demo.git')
+                    }
+                    branch('*/stage')
+                    extensions {
+                        cleanBeforeCheckout()
+                    }
+                }
+            }
+            scriptPath('destroy.groovy')
+            lightweight(true)
+        }
+    }
+
+    properties {
+        disableConcurrentBuilds()
+    }
+}
+pipelineJob('AWS/DEV/destroy-infra-1') {
+    description('Terraform + Infracost pipeline for infracost-aws-demo')
+
+    definition {
+        cpsScm {
+            scm {
+                git {
+                    remote {
+                        url('https://github.com/rafstef/infracost-aws-demo.git')
+                    }
+                    branch('*/develop')
+                    extensions {
+                        cleanBeforeCheckout()
+                    }
+                }
+            }
+            scriptPath('destroy.groovy')
             lightweight(true)
         }
     }
