@@ -64,7 +64,7 @@ pipelineJob('AWS/DEV/infra-1') {
                     }
                 }
             }
-            scriptPath('pipelines/DSL/Jenkinsfile')
+            scriptPath('pipelines/TF/Jenkinsfile')
             lightweight(true)
         }
     }
