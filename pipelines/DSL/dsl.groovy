@@ -14,7 +14,7 @@ pipelineJob('AWS/PROD/infra-1') {
                     }
                 }
             }
-            scriptPath('pipelines/DSL/Jenkinsfile')
+            scriptPath('pipelines/TF/Jenkinsfile')
             lightweight(true)
         }
     }
@@ -39,7 +39,7 @@ pipelineJob('AWS/STAGE/infra-1') {
                     }
                 }
             }
-            scriptPath('pipelines/DSL/Jenkinsfile')
+            scriptPath('pipelines/TF/Jenkinsfile')
             lightweight(true)
         }
     }
@@ -48,7 +48,7 @@ pipelineJob('AWS/STAGE/infra-1') {
         disableConcurrentBuilds()
     }
 }
-pipelineJob('AWS/DEV/infra-1') {
+pipelineJob('AWS/TF/infra-1') {
     description('Terraform + Infracost pipeline for infracost-aws-demo')
 
     definition {
