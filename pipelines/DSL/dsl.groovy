@@ -48,7 +48,7 @@ pipelineJob('AWS/STAGE/infra-1') {
         disableConcurrentBuilds()
     }
 }
-pipelineJob('AWS/TF/infra-1') {
+pipelineJob('AWS/DEV/infra-1') {
     description('Terraform + Infracost pipeline for infracost-aws-demo')
 
     definition {
@@ -58,7 +58,7 @@ pipelineJob('AWS/TF/infra-1') {
                     remote {
                         url('https://github.com/rafstef/infracost-aws-demo.git')
                     }
-                    branch('*/master')
+                    branch('*/develop')
                     extensions {
                         cleanBeforeCheckout()
                     }
