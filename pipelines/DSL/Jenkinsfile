@@ -19,4 +19,17 @@ pipeline {
             }
         }
     }
+    stages {
+        stage('FolderENV') {
+            steps {
+                jobDsl scriptText: 'job("ENV")'
+                jobDsl targets: ['foldersENV.groovy'].join('\n'),
+                removedJobAction: 'DELETE',
+                removedViewAction: 'DELETE',
+                lookupStrategy: 'SEED_JOB'
+            }
+        }
+    }
+
+
 }
