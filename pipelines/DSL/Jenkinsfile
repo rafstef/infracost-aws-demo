@@ -18,8 +18,7 @@ pipeline {
                 lookupStrategy: 'SEED_JOB'
             }
         }
-    }
-    stages {
+    
         stage('FolderENV') {
             steps {
                 jobDsl scriptText: 'job("ENV")'
