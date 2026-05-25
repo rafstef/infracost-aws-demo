@@ -27,7 +27,7 @@ module "vpc" {
 }
 
 resource "aws_instance" "vm" {
-  count         = 10
+  count         = ar.vm_count
   ami           = var.ami
   instance_type = var.instance_type
   subnet_id     = element(module.vpc.private_subnets, count.index % length(module.vpc.private_subnets))

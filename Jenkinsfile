@@ -104,9 +104,6 @@ pipeline {
 
                                 echo "Full output in JSON format"
                                 /opt/homebrew/bin/infracost inspect --json
-                                
-                                echo "Detailed breakdown directly (without inspect), output as table"
-                                /opt/homebrew/bin/infracost breakdown --path=. --terraform-var-file=${tfvarsFile} --format table
                                 """
                         }
                     }
