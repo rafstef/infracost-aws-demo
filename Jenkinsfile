@@ -89,8 +89,23 @@ pipeline {
                         ansiColor('xterm') {
                             sh """
                                 export INFRACOST_API_KEY=${INFRACOST_API_KEY}
-                                /opt/homebrew/bin/infracost breakdown --path=. --terraform-var-file=${tfvarsFile}
-                            """
+                                
+                                
+                                echo "Show the 10 most expensive resources"
+                                /opt/homebrew/bin/infracost inspect --top 10
+
+                                echo "Show all resources sorted by cost"
+                                /opt/homebrew/bin/infracost inspect --group-by resource
+
+                                echo "Show only failing policies"
+                                /opt/homebrew/bin/infracost inspect --failing
+
+                                echo "Full output in JSON format"
+                                /opt/homebrew/bin/infracost inspect --json
+                                
+                                echo "Detailed breakdown directly (without inspect), output as table"
+                                /opt/homebrew/bin/infracost breakdown --path=. --terraform-var-file=${tfvarsFile} --format table
+                                """
                         }
                     }
                 }
