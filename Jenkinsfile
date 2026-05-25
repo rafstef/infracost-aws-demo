@@ -70,11 +70,8 @@ pipeline {
                         ansiColor('xterm') {
                             sh """
                                 export NONINTERACTIVE=1
-                                /opt/homebrew/bin/brew install pipx
-                                /opt/homebrew/bin/brew pipx install checkov
-                                /opt/homebrew/bin/brew pipx upgrade checkov
                                 export FORCE_COLOR=1
-                                checkov --directory .
+                                /opt/homebrew/bin/checkov --directory .
                             """
                         }
                     } catch (err) {
