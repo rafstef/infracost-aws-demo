@@ -62,23 +62,6 @@ pipeline {
                 }
             }
         }
-
-        
-        stage('Infracost') {
-            steps {
-                withCredentials([string(credentialsId: 'INFRACOST_API_KEY', variable: 'INFRACOST_API_KEY')]) {
-                    script {
-                        def tfvarsFile = "envvars/${env.ENV_NAME}.tfvars"
-                        ansiColor('xterm') {
-                            sh """
-                                export INFRACOST_API_KEY=${INFRACOST_API_KEY}
-                                infracost breakdown --path=. --terraform-var-file=${tfvarsFile}
-                            """
-                        }
-                    }
-                }
-            }
-        }
         stage('checkov') {
             steps {
                 script {
@@ -96,6 +79,22 @@ pipeline {
                         }
                     } catch (err) {
                         echo "check error"
+                    }
+                }
+            }
+        }
+        
+        stage('Infracost') {
+            steps {
+                withCredentials([string(credentialsId: 'INFRACOST_API_KEY', variable: 'INFRACOST_API_KEY')]) {
+                    script {
+                        def tfvarsFile = "envvars/${env.ENV_NAME}.tfvars"
+                        ansiColor('xterm') {
+                            sh """
+                                export INFRACOST_API_KEY=${INFRACOST_API_KEY}
+                                infracost breakdown --path=. --terraform-var-file=${tfvarsFile}
+                            """
+                        }
                     }
                 }
             }
