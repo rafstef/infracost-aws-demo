@@ -49,7 +49,7 @@ pipeline {
                 ansiColor('xterm') {
                     sh "terraform version"
                     sh "terraform init -upgrade"
-                    sh "terraform init -backend-config=bucket=infratest-demo-${env.ENV_NAME}-tfstate"
+                    sh "terraform init -backend-config=bucket=infracost-demo-${env.ENV_NAME}"
                     sh "terraform init -upgrade"
                     sh "terraform validate"
                 }
@@ -59,7 +59,7 @@ pipeline {
             steps {
                 ansiColor('xterm') {
                     sh "terraform version"
-                    sh "terraform init -backend-config=bucket=infratest-demo-${env.ENV_NAME}-tfstate"
+                    sh "terraform init -backend-config=bucket=infracost-demo-${env.ENV_NAME}"
                     sh "terraform plan -input=false -var-file=envvars/${env.ENV_NAME}.tfvars -out terraform-plan-${env.ENV_NAME}.plan"
                 }
             }
@@ -110,7 +110,7 @@ pipeline {
                     if (approve_plan == "YES") {
                         ansiColor('xterm') {
                             sh "terraform version"
-                            sh "terraform init -backend-config=bucket=infratest-demo-${env.ENV_NAME}-tfstate"
+                            sh "terraform init -backend-config=bucket=infracost-${env.ENV_NAME}-tfstate"
                             sh "terraform apply -input=false terraform-plan-${env.ENV_NAME}.plan"
                         }
                     } else {
