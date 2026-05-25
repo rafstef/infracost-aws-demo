@@ -89,7 +89,7 @@ pipeline {
                         ansiColor('xterm') {
                             sh """
                                 export INFRACOST_API_KEY=${INFRACOST_API_KEY}
-                                infracost breakdown --path=. --terraform-var-file=${tfvarsFile}
+                                /opt/homebrew/bin/infracost breakdown --path=. --terraform-var-file=${tfvarsFile}
                             """
                         }
                     }
