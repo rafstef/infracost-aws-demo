@@ -48,6 +48,7 @@ pipeline {
             steps {
                 ansiColor('xterm') {
                     sh "terraform version"
+                    sg "echo infracost-demo-${env.ENV_NAME}"
                     sh "terraform init -upgrade"
                     sh "terraform init -backend-config=bucket=infracost-demo-${env.ENV_NAME}"
                     sh "terraform init -upgrade"
