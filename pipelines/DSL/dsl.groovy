@@ -33,7 +33,7 @@ pipelineJob('AWS/STAGE/deploy-infra-1') {
                     remote {
                         url('https://github.com/rafstef/infracost-aws-demo.git')
                     }
-                    branch('*/stage')
+                    branch('*/release')
                     extensions {
                         cleanBeforeCheckout()
                     }
