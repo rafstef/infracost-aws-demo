@@ -18,7 +18,7 @@ def getEnvName(branchName) {
     } else if ("origin/master".equals(branchName)) {
         return "prod";
     } else if ("origin/release".equals(branchName)) {
-        return "stage";
+        return "release";
     }
 }
 
