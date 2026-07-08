@@ -91,8 +91,7 @@ pipeline {
                                 export INFRACOST_API_KEY=${INFRACOST_API_KEY}
                                 export INFRACOST_CACHE_PATH=infracost-cache.json
                                 
-                                /opt/homebrew/bin/infracost scan --path=. --terraform-var-file=${tfvarsFile} --format json --out-file infracost-cache.json
-                                
+                                /opt/homebrew/bin/infracost breakdown --path=. --terraform-var-file=${tfvarsFile} --format json --out-file infracost-cache.json                                
                                 echo "Show the 10 most expensive resources"
                                 /opt/homebrew/bin/infracost inspect --top 10
 
